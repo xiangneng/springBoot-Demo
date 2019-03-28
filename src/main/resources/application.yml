@@ -1,0 +1,8 @@
+server:
+   port: 8088
+   servlet:
+       context-path: /demo
+   session-timeout: 1800
+   tomcat:
+     accesslog:
+        enabled: true
