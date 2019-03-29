@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 每10S, 扫描一次文件 -->
+<configuration scan="true" scanPeriod="10 seconds" debug="false">
+   <!-- 上下文 -->
+   <contextName>logback-boot</contextName>
+   <!-- 定义全局变量 -->
+   <property name="LOG_HOME" value="logs" />
+   <!-- 输出日志到控制台 -->
+   <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+      <!-- 记录格式化 -->
+      <encoder>
+          <!-- 日志输出格式 -->
+          <pattern>%d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+      </encoder>
+   </appender>
+   <!-- 输出日志到文件 -->
+   <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+       <!-- 安全输入 -->
+       <Prudent>true</Prudent>
+       <file>${LOG_HOME}/sys.log</file>
+       <!-- 日志文件最后接着输出 -->
+       <append>true</append>
+       <!-- 按日期滚动输出日志 -->
+       <rollingPolicy  class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+             <fileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}.log</fileNamePattern>
+             <!-- 日志保存天数 -->
+             <maxHistory>30</maxHistory>
+       </rollingPolicy>
+       <!-- 日志文件大小控制 -->
+       <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+             <maxFileSize>10MB</maxFileSize>
+       </triggeringPolicy>
+       <!-- 日志文件输出格式 -->
+       <layout class="ch.qos.logback.classic.PatternLayout">
+             <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+       </layout>
+   </appender>
+   <!-- 日志输出级别控制 ERROR WRAN INFO DEBUG -->
+   <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+   </root>
+</configuration>

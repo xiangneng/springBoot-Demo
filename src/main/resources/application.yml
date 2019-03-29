@@ -1,3 +1,4 @@
+#服务器配置
 server:
    port: 8088
    servlet:
@@ -6,3 +7,17 @@ server:
    tomcat:
      accesslog:
         enabled: true
+#日志信息配置
+logging:
+   level:
+     root: info
+   config: classpath:logback-boot.xml
+#yml文件依赖环境
+spring:
+   profiles:
+     active: dev
+#mybatis
+mybatis:
+   mapperlocations: mybatis/*Mapper.xml
+   typeAliasesPackage: com.springboot.Demo.**.domain
+      
