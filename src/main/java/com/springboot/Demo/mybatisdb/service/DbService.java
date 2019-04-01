@@ -14,6 +14,6 @@ public class DbService {
 	private CrawlerFlowInfoDao crawlerFlowInfoDao;
 	
 	public int selectCount() {
-		return crawlerFlowInfoDao.count();
+		return crawlerFlowInfoDao.findCount();
 	}
 }

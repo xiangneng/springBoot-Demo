@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class CrawlerFlowInfo {
-     private int flowId;
-     private int flowType;
-     private String flowDesc;
-     private String flowSchedule;
+	   private int flowId;
+	   private String flowDesc;
+	   private int flowType;
+	   private String flowSchedule;
 }
